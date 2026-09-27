@@ -81,4 +81,4 @@ jobs:
       - name: outputs info
         run: |
           echo: "You got a failure error in Pipeline"
-          echo: "${{ toJSON(github)}}"
+          echo: "${{ toJSON(github) }}"
