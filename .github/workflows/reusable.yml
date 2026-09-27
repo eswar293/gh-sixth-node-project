@@ -6,9 +6,14 @@ on:
         required: true
         default: dest
         type: string
+    outputs:
+      result: 
+        value: ${{ jobs.deploy.outputs.outcome }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    outputs:
+      outcome: ${{ steps.set-result.outputs.set-result }}
     steps:
       - name: get code
         uses: actions/download-artifact@v7
@@ -18,3 +23,6 @@ jobs:
         run: ls
       - name: output information
         run: echo "Deploying the app ..."
+      - name: display the result status
+        id: set-result
+        run: echo "set-result=success" >> $GITHUB_OUTPUT
