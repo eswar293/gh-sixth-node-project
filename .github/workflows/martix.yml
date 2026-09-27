@@ -1,0 +1,21 @@
+name: Matrix Sequence
+on: push
+jobs:
+  build:
+    continue-on-error: true
+    strategy:
+      matrix:
+        node-version: [12, 14, 16]
+        os-version: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os-version }}
+    steps:
+      - name: get code
+        uses: actions/checkout@v7
+      - name: Install NodeJS
+        uses: actions/setup-node@v7
+        with:
+            ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Build App
+        run: npm run build
