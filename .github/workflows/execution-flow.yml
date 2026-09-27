@@ -80,5 +80,5 @@ jobs:
     steps:
       - name: outputs info
         run: |
-          echo: "You got a failure error in Pipeline"
-          echo: "${{ toJSON(github) }}"
+          echo "You got a failure error in Pipeline"
+          echo "${{ toJSON(github) }}"
