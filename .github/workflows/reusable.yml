@@ -1,9 +1,8 @@
-name: reuable workflows
+name: reusable by calling
 on: workflow_call
 jobs:
-    deploy:
-        runs-on: ubuntu_latest
-        steps:
-          - name: calling the deployment jobs
-            run: |
-              echo "Depoying the app" 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: output information
+        run: echo "Deploying the app ..."
